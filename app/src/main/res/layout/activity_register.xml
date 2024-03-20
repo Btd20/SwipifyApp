@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_gradient"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/lato_black"
+        android:text="Regístrate"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp" />
+
+    <EditText
+        android:id="@+id/editTextNewUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edittext_background"
+        android:fontFamily="@font/lato_regular"
+        android:hint="New Username"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A8A8A"
+        android:textColorLink="#FFFFFF"/>
+
+    <EditText
+        android:id="@+id/editTextNewPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edittext_background"
+        android:fontFamily="@font/lato_regular"
+        android:hint="New Password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A8A8A"
+        android:textColorLink="#FFFFFF"/>
+
+    <EditText
+        android:id="@+id/editTextConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/edittext_background"
+        android:fontFamily="@font/lato_regular"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8A8A8A"
+        android:textColorLink="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/button_gradient"
+        android:fontFamily="@font/lato_black"
+        android:gravity="center"
+        android:padding="3dp"
+        android:onClick="register"
+        android:text="Registrar"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/textViewLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Ya tienes una cuenta? Inicia sesión"
+        android:textColor="#8A8A8A" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="226dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="150dp"
+        app:srcCompat="@drawable/swipifybanner_sinfondo" />
+
+</LinearLayout>
