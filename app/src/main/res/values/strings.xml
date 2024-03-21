@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">SwipifyApp</string>
+
+    <!-- TÍTULOS -->
+    <string name="loginTitle">Iniciar sesión</string>
+    <string name="registerTitle">Regístrate</string>
+    <!-- BOTONES -->
+    <string name="usuarioHint">Usuario</string>
+    <string name="contraseñaHint">Contraseña</string>
+    <string name="nuevoUsuarioHint">Nuevo usuario</string>
+    <string name="nuevaContraseñaHint">Nueva contraseña</string>
+    <string name="nuevaContraseñaRepetirHint">Repetir nueva contraseña</string>
+    <string name="loginButton">Iniciar sesión</string>
+    <string name="registerButton">Registrar</string>
+    <!-- TEXTOS -->
+    <string name="yaTienesCuenta">¿Ya tienes una cuenta? Inicia sesión</string>
+    <string name="noTienesCuenta">¿No tienes una cuenta? Regístrate aquí.</string>
+
 </resources>
