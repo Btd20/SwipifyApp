@@ -16,4 +16,14 @@
     <string name="yaTienesCuenta">¿Ya tienes una cuenta? Inicia sesión</string>
     <string name="noTienesCuenta">¿No tienes una cuenta? Regístrate aquí.</string>
 
+    <string name="urban">#Urban</string>
+    <string name="lofi">#Lo-fi</string>
+    <string name="nightclub">#NightClub</string>
+
+    <string name="nirvana">Nirvana</string>
+    <string name="nevermind">Nevermind</string>
+    <string name="shapred_box">Shapred Box</string>
+    <string name="search_fragment">Search</string>
+
+
 </resources>
