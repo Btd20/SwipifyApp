@@ -16,7 +16,7 @@ class RegisterActivityUnitTest {
         registerActivity = RegisterActivity()
     }
 
-    /* PRUEBA UNITARIA DE METODO */
+    /* PRUEBA UNITARIA */
     @Test
     fun testRegister_SuccessfulRegistration() {
 
@@ -33,6 +33,7 @@ class RegisterActivityUnitTest {
         assertEquals(expectedIntent.component, actualIntent.component)
     }
 
+    /* PRUEBA UNITARIA */
     @Test
     fun testRegister_PasswordsDoNotMatch() {
 
@@ -47,7 +48,7 @@ class RegisterActivityUnitTest {
         assertEquals(null, registerActivity.getNextStartedActivity())
     }
 
-    /* PRUEBA UNITARIA DE METODO */
+    /* PRUEBA UNITARIA */
     @Test
     fun testNavigateToLogin() {
         // Llamar al método navigateToLogin()
