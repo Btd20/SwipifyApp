@@ -3,6 +3,7 @@ package com.example.swipifyapp
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -16,6 +17,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var confirmPasswordEditText: EditText
     private lateinit var registerButton: Button
     private lateinit var loginText: TextView
+    private lateinit var passwordRequirementsTextView: TextView // Declarar TextView para los requisitos de contraseña
 
     private lateinit var swipifyDatabase: SwipifyDatabase
 
@@ -30,6 +32,7 @@ class RegisterActivity : AppCompatActivity() {
         confirmPasswordEditText = findViewById(R.id.editTextConfirmPassword)
         registerButton = findViewById(R.id.buttonRegister)
         loginText = findViewById(R.id.textViewLogin)
+        passwordRequirementsTextView = findViewById(R.id.passwordRequirementsTextView) // Inicializar el TextView
 
         registerButton.setOnClickListener {
             register() // Llamada al método register sin parámetros
@@ -55,6 +58,14 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
+        // Verificar si la contraseña cumple con los requisitos
+        if (!isValidPassword(password)) {
+            passwordRequirementsTextView.visibility = View.VISIBLE // Cambiar la visibilidad a 'visible'
+            return
+        } else {
+            passwordRequirementsTextView.visibility = View.INVISIBLE // Cambiar la visibilidad a 'invisible'
+        }
+
         val result = swipifyDatabase.insertUsuario(this, username, password)
 
         if (result != -1L) {
@@ -71,4 +82,15 @@ class RegisterActivity : AppCompatActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
+
+    // Método para verificar si la contraseña cumple con los requisitos
+    private fun isValidPassword(password: String): Boolean {
+        val upperCaseRegex = Regex("[A-Z]")
+        val specialCharacterRegex = Regex("[^A-Za-z0-9]")
+        val numberRegex = Regex("[0-9]")
+
+        return password.length >= 8 && password.contains(upperCaseRegex) &&
+                password.contains(specialCharacterRegex) && password.contains(numberRegex)
+    }
 }
+

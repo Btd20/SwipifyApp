@@ -4,6 +4,7 @@
     <!-- TÍTULOS -->
     <string name="loginTitle">Iniciar sesión</string>
     <string name="registerTitle">Regístrate</string>
+    <string name="playlistsTitle">Tus listas</string>
     <!-- BOTONES -->
     <string name="usuarioHint">Usuario</string>
     <string name="contraseñaHint">Contraseña</string>
@@ -12,8 +13,10 @@
     <string name="nuevaContraseñaRepetirHint">Repetir nueva contraseña</string>
     <string name="loginButton">Iniciar sesión</string>
     <string name="registerButton">Registrar</string>
+    <string name="crearListaNueva">Crear nueva lista</string>
     <!-- TEXTOS -->
     <string name="yaTienesCuenta">¿Ya tienes una cuenta? Inicia sesión</string>
     <string name="noTienesCuenta">¿No tienes una cuenta? Regístrate aquí.</string>
+    <string name="passwordRequirements">La contraseña debe contener al menos una mayúscula, un carácter especial y un número</string>
 
 </resources>

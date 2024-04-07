@@ -44,8 +44,7 @@ class SwipifyDatabase(context: Context) :
         val CREATE_TABLE_USUARIOS = ("CREATE TABLE $TABLE_USUARIOS ($KEY_ID INTEGER PRIMARY KEY AUTOINCREMENT, $KEY_USUARIO TEXT UNIQUE, $KEY_CONTRASENYA TEXT)")
         val CREATE_TABLE_CANCIONES = ("CREATE TABLE $TABLE_CANCIONES ($KEY_ID INTEGER PRIMARY KEY AUTOINCREMENT, $KEY_TITULO TEXT, $KEY_ARTISTA TEXT, $KEY_ALBUM TEXT, $KEY_GENERO TEXT, $KEY_DURACION INTEGER)")
         val CREATE_TABLE_LIKES = ("CREATE TABLE $TABLE_LIKES ($KEY_ID INTEGER PRIMARY KEY AUTOINCREMENT, $KEY_USUARIO_ID INTEGER, $KEY_CANCION_ID INTEGER)")
-        val CREATE_TABLE_PLAYLISTS = ("CREATE TABLE $TABLE_PLAYLISTS ($KEY_ID INTEGER PRIMARY KEY AUTOINCREMENT, $KEY_NOMBRE TEXT UNIQUE, $KEY_USUARIO_ID INTEGER, $KEY_CANCIONES TEXT)")
-
+        val CREATE_TABLE_PLAYLISTS = ("CREATE TABLE $TABLE_PLAYLISTS ($KEY_ID INTEGER PRIMARY KEY AUTOINCREMENT, $KEY_NOMBRE TEXT UNIQUE, $KEY_CANCIONES TEXT)")
         db.execSQL(CREATE_TABLE_USUARIOS)
         db.execSQL(CREATE_TABLE_CANCIONES)
         db.execSQL(CREATE_TABLE_LIKES)
@@ -83,5 +82,32 @@ class SwipifyDatabase(context: Context) :
         val isLoggedIn = cursor.count > 0
         cursor.close()
         return isLoggedIn
+    }
+
+    fun insertPlaylist(context: Context, nombre: String, canciones: String): Long {
+        val dbHandler = SwipifyDatabase(context)
+        val db = dbHandler.writableDatabase
+
+        val contentValues = ContentValues().apply {
+            put(KEY_NOMBRE, nombre)
+            put(KEY_CANCIONES, canciones)
+        }
+        val result = db.insert(TABLE_PLAYLISTS, null, contentValues)
+        db.close()
+        return result
+    }
+
+    fun getAllPlaylists(context: Context): List<String> {
+        val playlists = mutableListOf<String>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT $KEY_NOMBRE FROM $TABLE_PLAYLISTS", null)
+        cursor.use {
+            while (it.moveToNext()) {
+                val playlistName = it.getString(it.getColumnIndex(KEY_NOMBRE))
+                playlists.add(playlistName)
+            }
+        }
+        db.close()
+        return playlists
     }
 }

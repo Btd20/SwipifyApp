@@ -5,5 +5,6 @@
     <color name="backgroundColor">#D6BFE6</color>
     <color name="backgroundColor2">#292929</color>
     <color name="backgroundColor3">#FF4C4C4C</color>
-    <color name="transparent">#00FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>s
+    <color name="grayText">#717171</color>
 </resources>

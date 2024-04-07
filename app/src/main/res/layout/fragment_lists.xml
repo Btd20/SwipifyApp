@@ -3,17 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_gradient"
-    android:gravity="center">
+    android:background="@drawable/background_gradient">
 
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/lato_black"
+        android:text="@string/playlistsTitle"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="38sp" />
+
+    <Button
+        android:id="@+id/btnCrearLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lists Fragment"
-        android:textSize="24sp"
-        android:layout_marginTop="16dp"/>
+        android:layout_gravity="center_horizontal"
+        android:text="@string/crearListaNueva"
+        android:layout_marginTop="0dp"/>
 
-    <!-- Aquí puedes agregar más vistas según sea necesario -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPlaylists"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
