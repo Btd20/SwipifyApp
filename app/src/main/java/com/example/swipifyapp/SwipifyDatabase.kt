@@ -49,6 +49,15 @@ class SwipifyDatabase(context: Context) :
         db.execSQL(CREATE_TABLE_CANCIONES)
         db.execSQL(CREATE_TABLE_LIKES)
         db.execSQL(CREATE_TABLE_PLAYLISTS)
+
+        val queryInsertExitosEspana = "INSERT INTO $TABLE_PLAYLISTS ($KEY_NOMBRE, $KEY_CANCIONES) VALUES ('Exitos de España', 'Canción 1,Canción 2,Canción 3')"
+        db.execSQL(queryInsertExitosEspana)
+
+        val queryInsertExitosMundiales = "INSERT INTO $TABLE_PLAYLISTS ($KEY_NOMBRE, $KEY_CANCIONES) VALUES ('Exitos Mundiales', 'Song 1,Song 2,Song 3')"
+        db.execSQL(queryInsertExitosMundiales)
+
+        val queryInsertUltimosLanzamientos = "INSERT INTO $TABLE_PLAYLISTS ($KEY_NOMBRE, $KEY_CANCIONES) VALUES ('Ultimos Lanzamientos', 'Track 1,Track 2,Track 3')"
+        db.execSQL(queryInsertUltimosLanzamientos)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -73,16 +82,22 @@ class SwipifyDatabase(context: Context) :
         return result
     }
 
-    fun loginUser(context: Context, username: String, password: String): Boolean {
+    fun loginUser(context: Context, username: String, password: String): String? {
         val dbHandler = SwipifyDatabase(context)
         val db = dbHandler.readableDatabase
 
-        val query = "SELECT * FROM usuarios WHERE usuario = ? AND contrasenya = ?"
+        val query = "SELECT $KEY_USUARIO FROM $TABLE_USUARIOS WHERE $KEY_USUARIO = ? AND $KEY_CONTRASENYA = ?"
         val cursor = db.rawQuery(query, arrayOf(username, password))
         val isLoggedIn = cursor.count > 0
+        var loggedInUsername: String? = null
+        if (isLoggedIn) {
+            cursor.moveToFirst()
+            loggedInUsername = cursor.getString(cursor.getColumnIndex(KEY_USUARIO))
+        }
         cursor.close()
-        return isLoggedIn
+        return loggedInUsername
     }
+
 
     fun insertPlaylist(context: Context, nombre: String, canciones: String): Long {
         val dbHandler = SwipifyDatabase(context)
@@ -107,7 +122,8 @@ class SwipifyDatabase(context: Context) :
                 playlists.add(playlistName)
             }
         }
-        db.close()
+        cursor.close() // Cierra el cursor después de su uso
         return playlists
     }
+
 }

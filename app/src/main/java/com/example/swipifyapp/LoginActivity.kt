@@ -1,5 +1,6 @@
 package com.example.swipifyapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -26,9 +27,12 @@ class LoginActivity : AppCompatActivity() {
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()
 
-            val isLoggedIn = swipifyDatabase.loginUser(this, username, password)
+            val loggedInUsername = swipifyDatabase.loginUser(this, username, password)
 
-            if (isLoggedIn) {
+            if (loggedInUsername != null) {
+                // Guardar el nombre de usuario en SharedPreferences
+                saveUsernameToSharedPreferences(loggedInUsername)
+
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {
@@ -39,5 +43,10 @@ class LoginActivity : AppCompatActivity() {
         registerText.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+    }
+
+    private fun saveUsernameToSharedPreferences(username: String) {
+        val sharedPreferences = getSharedPreferences("swipify_prefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().putString("username", username).apply()
     }
 }

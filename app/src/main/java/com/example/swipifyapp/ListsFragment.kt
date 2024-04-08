@@ -40,7 +40,9 @@ class ListsFragment : Fragment() {
 
         // Initialize RecyclerView
         recyclerViewPlaylists.layoutManager = LinearLayoutManager(context)
-        playlistsAdapter = PlaylistAdapter(emptyList()) // Inicializamos con una lista vacía
+        val sharedPreferences = requireContext().getSharedPreferences("swipify_prefs", Context.MODE_PRIVATE)
+        val username = sharedPreferences.getString("username", null)
+        playlistsAdapter = PlaylistAdapter(emptyList(), username) // Inicializamos con una lista vacía y el nombre de usuario
         recyclerViewPlaylists.adapter = playlistsAdapter
 
         // Obtener listas de reproducción de la base de datos
@@ -55,6 +57,7 @@ class ListsFragment : Fragment() {
             showCreatePlaylistDialog()
         }
     }
+
 
     private fun showCreatePlaylistDialog() {
         val dialogView = layoutInflater.inflate(R.layout.dialog_create_playlist, null)

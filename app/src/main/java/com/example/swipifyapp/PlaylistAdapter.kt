@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class PlaylistAdapter(private var playlists: List<String> = emptyList()) :
+class PlaylistAdapter(private var playlists: List<String> = emptyList(), private val username: String?) :
     RecyclerView.Adapter<PlaylistAdapter.PlaylistViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistViewHolder {
@@ -17,7 +17,7 @@ class PlaylistAdapter(private var playlists: List<String> = emptyList()) :
 
     override fun onBindViewHolder(holder: PlaylistViewHolder, position: Int) {
         val playlistName = playlists[position]
-        holder.bind(playlistName)
+        holder.bind(playlistName, username)
     }
 
     override fun getItemCount(): Int {
@@ -31,9 +31,14 @@ class PlaylistAdapter(private var playlists: List<String> = emptyList()) :
 
     inner class PlaylistViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val playlistNameTextView: TextView = itemView.findViewById(R.id.playlistNameTextView)
+        private val authorTextView: TextView = itemView.findViewById(R.id.author)
 
-        fun bind(playlistName: String) {
+        fun bind(playlistName: String, username: String?) {
             playlistNameTextView.text = playlistName
+            username?.let {
+                authorTextView.text = "Creada por: " + it
+            }
         }
     }
 }
+
