@@ -27,5 +27,12 @@
     <string name="urban">#Urban</string>
     <string name="search_fragment">Search Fragment</string>
     <string name="songTitle1">Come as you are</string>
+    <string name="songAuthor1">Nirvana</string>
+    <string name="songTitle2">Save Your Tears</string>
+    <string name="songAuthor2">The Weeknd</string>
+    <string name="songTitle3">Levitating</string>
+    <string name="songAuthor3">Dua Lipa</string>
+    <string name="songTitle4">Neverita</string>
+    <string name="songAuthor4">Bad Bunny</string>
 
 </resources>
