@@ -8,17 +8,137 @@
     android:background="@drawable/background_gradient"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home Fragment"
-        android:textSize="24sp"
+    <!-- Primer columna -->
+    <LinearLayout
+        android:id="@+id/firstColumn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/secondColumn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Tarjeta 1 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_corners"
+            android:padding="16dp">
+
+            <!-- Contenido de la tarjeta 1 -->
+            <!-- Puedes agregar aquí cualquier contenido que desees -->
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="104dp"
+                android:layout_height="100dp"
+                android:src="@drawable/nk"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/songTitle1"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nirvana"
+                android:textColor="@color/grayText"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/play"
+                app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Tarjeta 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_corners"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Contenido de la tarjeta 2 -->
+            <!-- Puedes agregar aquí cualquier contenido que desees -->
+
+        </LinearLayout>
+
+        <!-- Agrega más tarjetas según sea necesario -->
+
+    </LinearLayout>
+
+    <!-- Segunda columna -->
+    <LinearLayout
+        android:id="@+id/secondColumn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/firstColumn"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <!-- Aquí puedes agregar más vistas según sea necesario -->
+        <!-- Tarjeta 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_corners"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Contenido de la tarjeta 3 -->
+            <!-- Puedes agregar aquí cualquier contenido que desees -->
+
+        </LinearLayout>
+
+        <!-- Tarjeta 4 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_corners"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Contenido de la tarjeta 4 -->
+            <!-- Puedes agregar aquí cualquier contenido que desees -->
+
+        </LinearLayout>
+
+        <!-- Agrega más tarjetas según sea necesario -->
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

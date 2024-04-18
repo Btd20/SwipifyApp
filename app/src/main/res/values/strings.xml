@@ -14,9 +14,18 @@
     <string name="loginButton">Iniciar sesión</string>
     <string name="registerButton">Registrar</string>
     <string name="crearListaNueva">Crear nueva lista</string>
+    <string name="selectImage">Seleccionar portada</string>
     <!-- TEXTOS -->
     <string name="yaTienesCuenta">¿Ya tienes una cuenta? Inicia sesión</string>
     <string name="noTienesCuenta">¿No tienes una cuenta? Regístrate aquí.</string>
     <string name="passwordRequirements">La contraseña debe contener al menos una mayúscula, un carácter especial y un número</string>
+    <string name="nirvana">Nirvana</string>
+    <string name="nevermind">Nevermind</string>
+    <string name="shapred_box">Shapred Box</string>
+    <string name="nightclub">#Nightclub</string>
+    <string name="lofi">#Lo-fi</string>
+    <string name="urban">#Urban</string>
+    <string name="search_fragment">Search Fragment</string>
+    <string name="songTitle1">Come as you are</string>
 
 </resources>

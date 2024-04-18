@@ -112,6 +112,21 @@ class SwipifyDatabase(context: Context) :
         return result
     }
 
+    fun insertSongIntoPlaylist(context: Context, playlistId: Long, nombreCancion: String): Long {
+        val dbHandler = SwipifyDatabase(context)
+        val db = dbHandler.writableDatabase
+
+        val contentValues = ContentValues().apply {
+            put(KEY_ID, playlistId)
+            put(KEY_NOMBRE, nombreCancion)
+        }
+
+        val result = db.insert(TABLE_PLAYLISTS, null, contentValues)
+        db.close()
+
+        return result
+    }
+
     fun getAllPlaylists(context: Context): List<String> {
         val playlists = mutableListOf<String>()
         val db = readableDatabase
