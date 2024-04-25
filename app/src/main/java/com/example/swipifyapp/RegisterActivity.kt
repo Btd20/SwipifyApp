@@ -12,14 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var usernameEditText: EditText
-    private lateinit var passwordEditText: EditText
-    private lateinit var confirmPasswordEditText: EditText
+    lateinit var usernameEditText: EditText
+    lateinit var passwordEditText: EditText
+    lateinit var confirmPasswordEditText: EditText
     private lateinit var registerButton: Button
     private lateinit var loginText: TextView
-    private lateinit var passwordRequirementsTextView: TextView // Declarar TextView para los requisitos de contraseña
+    lateinit var passwordRequirementsTextView: TextView
 
-    private lateinit var swipifyDatabase: SwipifyDatabase
+    lateinit var swipifyDatabase: SwipifyDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun register() {
+    fun register() {
         val username = usernameEditText.text.toString()
         val password = passwordEditText.text.toString()
         val confirmPassword = confirmPasswordEditText.text.toString()
@@ -78,13 +78,13 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToLogin() {
+    fun navigateToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
 
     // Método para verificar si la contraseña cumple con los requisitos
-    private fun isValidPassword(password: String): Boolean {
+    fun isValidPassword(password: String): Boolean {
         val upperCaseRegex = Regex("[A-Z]")
         val specialCharacterRegex = Regex("[^A-Za-z0-9]")
         val numberRegex = Regex("[0-9]")

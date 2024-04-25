@@ -5,18 +5,46 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.widget.SearchView
 
 class SearchFragment : Fragment() {
+
+    private lateinit var searchView: SearchView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var searchAdapter: SearchAdapter
+    private lateinit var database: SwipifyDatabase
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
-    }
+        val rootView = inflater.inflate(R.layout.fragment_search, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        // Inicializar la base de datos
+        database = SwipifyDatabase(requireContext())
+
+        // Configurar RecyclerView y su Adapter
+        recyclerView = rootView.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        searchAdapter = SearchAdapter(listOf()) // Inicialmente vacío
+        recyclerView.adapter = searchAdapter
+
+        // Configurar SearchView
+        searchView = rootView.findViewById(R.id.search_view)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val filteredSongs = database.getAllSongsFiltered(newText ?: "")
+                searchAdapter.filter(newText ?: "", filteredSongs)
+                return true
+            }
+        })
+
+        return rootView
     }
 }

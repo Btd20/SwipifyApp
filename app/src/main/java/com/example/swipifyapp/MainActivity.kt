@@ -1,5 +1,6 @@
 package com.example.swipifyapp
 
+import ExploreFragment
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.ImageButton

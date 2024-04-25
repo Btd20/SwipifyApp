@@ -1,0 +1,74 @@
+<!-- Layout para cada elemento de búsqueda en el RecyclerView -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/backgroundColor3"
+    android:padding="16dp">
+
+    <!-- ImageView para la imagen de la canción (en el margen izquierdo) -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/explore"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- Contenedor para los elementos de texto y el botón de "play" -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- TextView para mostrar el título de la canción -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- TextView para mostrar el artista de la canción -->
+        <TextView
+            android:id="@+id/artistTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- TextView para mostrar el álbum de la canción -->
+        <TextView
+            android:id="@+id/albumTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- TextView para mostrar el género de la canción -->
+        <TextView
+            android:id="@+id/genreTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"/>
+
+        <!-- Botón de "play" alineado a la derecha -->
+        <Button
+            android:id="@+id/playButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end|center_vertical"
+            android:background="@drawable/play"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

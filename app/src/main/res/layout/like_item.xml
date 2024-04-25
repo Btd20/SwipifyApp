@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/playlistIconImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/nk"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Selector de playlists -->
+    <Spinner
+        android:id="@+id/playlistSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:color="@color/white"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/addToPlaylistButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Añadir"
+        android:layout_marginTop="16dp"
+        android:onClick="onAddToPlaylistClicked" />
+
+</LinearLayout>

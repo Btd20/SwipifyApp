@@ -2,6 +2,7 @@ package com.example.swipifyapp
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
@@ -112,7 +113,7 @@ class SwipifyDatabase(context: Context) :
         return result
     }
 
-    fun insertSongIntoPlaylist(context: Context, playlistId: Long, nombreCancion: String): Long {
+    fun addToPlaylist(context: Context, playlistId: String, nombreCancion: String): Long {
         val dbHandler = SwipifyDatabase(context)
         val db = dbHandler.writableDatabase
 
@@ -141,4 +142,29 @@ class SwipifyDatabase(context: Context) :
         return playlists
     }
 
+    fun getAllSongs(): List<Cursor> {
+        val db = readableDatabase
+        val songsCursorList = mutableListOf<Cursor>()
+
+        val query = "SELECT * FROM $TABLE_CANCIONES"
+        val cursor: Cursor = db.rawQuery(query, null)
+
+        songsCursorList.add(cursor)
+
+        db.close()
+
+        return songsCursorList
+    }
+    fun getAllSongsFiltered(query: String): List<Cursor> {
+        val db = readableDatabase
+        val cursorList = mutableListOf<Cursor>()
+
+        val selection = "$KEY_TITULO LIKE ? OR $KEY_ARTISTA LIKE ? OR $KEY_ALBUM LIKE ? OR $KEY_GENERO LIKE ?"
+        val selectionArgs = arrayOf("%$query%", "%$query%", "%$query%", "%$query%")
+
+        val cursor = db.query(TABLE_CANCIONES, null, selection, selectionArgs, null, null, null)
+        cursorList.add(cursor)
+
+        return cursorList
+    }
 }
