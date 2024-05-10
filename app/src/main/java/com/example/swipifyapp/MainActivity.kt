@@ -1,12 +1,17 @@
 package com.example.swipifyapp
 
 import ExploreFragment
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -45,6 +50,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val imageView = findViewById<ImageView>(R.id.imageView4)
+        imageView.setOnClickListener { view ->
+            showPopupMenu(view)
+        }
 
         playPauseButton = findViewById(R.id.playPauseButton)
         restartButton = findViewById(R.id.restartButton)
@@ -99,6 +109,38 @@ class MainActivity : AppCompatActivity() {
         }.start()
     }
 
+    private fun showPopupMenu(view: View) {
+        val popupMenu = PopupMenu(this, view)
+        popupMenu.inflate(R.menu.menu_report_options)
+
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_create_pdf -> {
+                    // Crear un intent para iniciar PdfReportActivity
+                    val intent = Intent(this, PdfReportActivity::class.java)
+                    // Iniciar la actividad PdfReportActivity
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+        popupMenu.show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_create_pdf -> {
+                // Crear un intent para iniciar PdfReportActivity
+                val intent = Intent(this, PdfReportActivity::class.java)
+                // Iniciar la actividad PdfReportActivity
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     private fun togglePlayPause() {
         if (isPlaying) {
             pauseMusic()
@@ -111,7 +153,7 @@ class MainActivity : AppCompatActivity() {
         isPlaying = true
         playPauseButton.setBackgroundResource(R.drawable.pause) // Establecer imagen de pausa
         mediaPlayer.start() // Iniciar la reproducción del archivo de audio
-        musicTitleTextView.visibility = TextView.VISIBLE // Mostrar el texto
+        musicTitleTextView.visibility = View.VISIBLE // Mostrar el texto
         musicTitleTextView.isSelected = true
     }
 
@@ -139,4 +181,3 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 }
-

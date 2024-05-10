@@ -21,17 +21,13 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_search, container, false)
-
-        // Inicializar la base de datos
         database = SwipifyDatabase(requireContext())
 
-        // Configurar RecyclerView y su Adapter
         recyclerView = rootView.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        searchAdapter = SearchAdapter(listOf()) // Inicialmente vacío
+        searchAdapter = SearchAdapter(listOf())
         recyclerView.adapter = searchAdapter
 
-        // Configurar SearchView
         searchView = rootView.findViewById(R.id.search_view)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class SearchAdapter(var originalSongs: List<Cursor>) :
+class SearchAdapter(private var originalSongs: List<Cursor>) :
     RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
 
     private var filteredSongs: List<Cursor> = originalSongs
