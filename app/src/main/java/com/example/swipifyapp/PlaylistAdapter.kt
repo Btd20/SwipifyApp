@@ -30,7 +30,7 @@ class PlaylistAdapter(private var playlists: List<String> = emptyList(), private
     }
 
     inner class PlaylistViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val playlistNameTextView: TextView = itemView.findViewById(R.id.playlistNameTextView)
+        val playlistNameTextView: TextView = itemView.findViewById(R.id.playlistNameTextView)
         private val authorTextView: TextView = itemView.findViewById(R.id.author)
 
         fun bind(playlistName: String, username: String?) {

@@ -87,7 +87,7 @@ class ReportsActivity : AppCompatActivity() {
         }
     }
 
-    private fun createBarChart(numUsers: Int, numPlaylists: Int): BarChart {
+    fun createBarChart(numUsers: Int, numPlaylists: Int): BarChart {
         val barChart = BarChart(this)
 
         val entries = listOf(
@@ -116,7 +116,7 @@ class ReportsActivity : AppCompatActivity() {
         return barChart
     }
 
-    private fun getBitmapFromView(view: View): Bitmap {
+    fun getBitmapFromView(view: View): Bitmap {
         val widthSpec = View.MeasureSpec.makeMeasureSpec(view.layoutParams.width, View.MeasureSpec.EXACTLY)
         val heightSpec = View.MeasureSpec.makeMeasureSpec(view.layoutParams.height, View.MeasureSpec.EXACTLY)
         view.measure(widthSpec, heightSpec)
@@ -130,7 +130,7 @@ class ReportsActivity : AppCompatActivity() {
         return bitmap
     }
 
-    private fun savePdfWithImage(filePath: String, bitmap: Bitmap, title: String) {
+    fun savePdfWithImage(filePath: String, bitmap: Bitmap, title: String) {
         val pdfFile = File(filePath)
         val writer = PdfWriter(pdfFile)
         val pdfDoc = PdfDocument(writer)

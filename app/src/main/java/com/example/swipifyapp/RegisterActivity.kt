@@ -12,12 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var usernameEditText: EditText
-    private lateinit var passwordEditText: EditText
-    private lateinit var confirmPasswordEditText: EditText
+    lateinit var usernameEditText: EditText
+    lateinit var passwordEditText: EditText
+    lateinit var confirmPasswordEditText: EditText
     private lateinit var registerButton: Button
     private lateinit var loginText: TextView
-    private lateinit var passwordRequirementsTextView: TextView // Declarar TextView para los requisitos de contraseña
+    lateinit var passwordRequirementsTextView: TextView // Declarar TextView para los requisitos de contraseña
 
     private lateinit var swipifyDatabase: SwipifyDatabase
 
@@ -43,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun register() {
+    fun register() {
         val username = usernameEditText.text.toString()
         val password = passwordEditText.text.toString()
         val confirmPassword = confirmPasswordEditText.text.toString()
