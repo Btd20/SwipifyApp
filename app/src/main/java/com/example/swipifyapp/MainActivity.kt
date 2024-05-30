@@ -1,8 +1,10 @@
 package com.example.swipifyapp
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var restartButton: ImageButton
     private lateinit var musicTitleTextView: TextView
     private lateinit var seekBar: SeekBar
+    private lateinit var profileImageView: ImageView
     private var isPlaying = false
 
     private val onNavigationItemSelectedListener =
@@ -50,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer = MediaPlayer.create(this, R.raw.onceyonce)
         musicTitleTextView = findViewById(R.id.musicTitleTextView)
         seekBar = findViewById(R.id.seekBar)
+        profileImageView = findViewById(R.id.imageView4)
 
         playPauseButton.setOnClickListener {
             togglePlayPause()
@@ -96,6 +100,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }.start()
+
+        // Configurar el OnClickListener para la imagen de perfil
+        profileImageView.setOnClickListener {
+            val intent = Intent(this, ReportsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun togglePlayPause() {
@@ -138,4 +148,3 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 }
-
